@@ -1,0 +1,248 @@
+.row-header {
+	margin: 0px auto;
+	padding: 0px auto;
+}
+
+.row-content {
+	margin: 0px auto;
+	padding: 30px 0px 20px 0px;
+	/* border-bottom: 1px ridge;*/
+	min-height: 400px;
+}
+
+.row-footer {
+	/* background-color: #5c7ebd; */
+	margin: 0px auto;
+	padding: 10px 0px 10px 0px;
+}
+
+.jumbotron {
+	padding: 20px 30px 20px 30px;
+	margin: 0px auto;
+	background: white;
+	color: white;
+}
+
+address {
+	font-size: 80%;
+	margin: 0;
+	color: #0f0f0f;
+}
+
+html, body {
+	/* font-family: 'Roboto', sans-serif; */
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	/* min-width:1040px; */
+	/* color: white;  */
+	/* overflow:scroll;overflow-x:hidden; */
+}
+
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%; 
+}
+
+.footer {
+	
+	position: relative;
+	margin-top: -86px;/*缁涘绨琭ooter閻ㄥ嫰鐝惔锟�*/ 
+	height: 66px; 
+	clear:both; 
+	
+}
+.btn .btn-primary{
+	style="background: #5c7ebd;
+	border: 0;
+}
+.page {
+	padding-bottom: 91.1px; /*缁涘绨琭ooter閻ㄥ嫰鐝惔锟�*/
+}
+
+.history-container{
+	background:#FCFCFC;
+	margin:15px;
+	padding:10px
+}
+
+.btn-lg {
+    line-height: 24px;
+    min-width: 200px;
+    padding-bottom: 13px;
+    padding-top: 13px;
+}
+
+.navLogo{
+	margin: 5px;
+}
+.breadcrumb-nav {
+	font-size: 14px;
+	margin-top: 90px
+}
+
+.navbar-inverse {
+	background: #5c7ebd;
+	top: 0;
+	border-width: 0 0 1px;
+	/*   position: fixed; */
+	right: 0;
+	left: 0;
+	z-index: 1030;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover,
+	.navbar-inverse .navbar-nav>.active>a:focus {
+	color: #fff;
+	background: #5c7ebd;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,
+	.navbar-inverse .navbar-nav>.open>a:focus {
+	color: #fff;
+	background: #5c7ebd;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a, .navbar-inverse .navbar-nav .open .dropdown-menu
+	{
+	background-color: #5c7ebd;
+	color: #eeeeee;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+	color: #000000;
+}
+
+.tab-content {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 10px;
+}
+
+.affix {
+	top: 100px;
+}
+
+.carousel {
+	background: white;
+}
+
+.carousel .item {
+	height: 300px;
+}
+
+.item img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-height: 300px;
+}
+
+.access-item {
+	font-family: 'Arial Normal', 'Arial';
+	font-size: 16px;
+	color: red;
+	margin: 0 auto;
+	padding: 5px 10px 5px 10px ;
+	text-align: center;
+	cursor: pointer;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	height: 50px;
+}
+
+.access-item:hover {
+	font-size: 20px;
+}
+
+.access-item:hover a {
+	text-decoration: none
+}
+
+.access-detail {
+	font-family: 'Arial Normal', 'Arial';
+	font-size: 16px;
+	color: #5C7EBD;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.access-item-test {
+	font-family: 'Arial Normal', 'Arial';
+	font-size: 20px;
+	color: #5C7EBD;
+	/*padding-bottom: 10px;
+padding-top: 10px;*/
+	cursor: pointer;
+	margin: 0 auto;
+}
+
+.result-item {
+	background: #FCFCFC;
+	padding: 15px;
+	margin: 10px 20px 10px 10px;
+}
+
+.result-item-label {
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	height: 55px;
+	line-height: 30px;
+}
+
+.result-item-label:after {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 0 5px 1px 45px;
+	content: '...';
+	background: url(ellipsis_bg.png) repeat-y;
+}
+
+.hightlight {
+	color: red;
+	font-weight: 700;
+}
+
+
+.check-role input {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#detail_form {
+	margin-top: 20px;
+}
+
+#email_template {
+	margin-top: 20px;
+}
+
+.role-select-label {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: white;
+}
+
+#num{
+	font-weight: 600;
+	color: rgba(92,126,189,1);
+}
+
+/*** guide ***/
+.guide{width:60px;margin-left:650px;position:fixed;left:50%;bottom:134px;_position:absolute;_top:expression(documentElement.scrollTop+documentElement.clientHeight - this.clientHeight - 134+'px');display:block;}
+.guide a{display:block;width:60px;height:50px;background:url(../img/sprite_v2.png) no-repeat;margin-top:10px;text-decoration:none;font:13px/50px "Microsoft YaHei";text-align:center;color:#fff;border-radius:2px;}
+.guide a span{display:none;text-align:center;}
+.guide a:hover{text-decoration:none;background-color:#5C7EBD;color:#fff;}
+.guide a:hover span{display:block;width:60px;background:#5C7EBD}
+
+.guide .report{background-position:-146px -236px;}
+.guide .top{background-position:-145px -185px;}

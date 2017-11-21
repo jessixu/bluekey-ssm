@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.bluekey.dao.MailTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.ibm.bluekey.bean.MailTemplate">
+    <id column="temp_id" jdbcType="INTEGER" property="tempId" />
+    <result column="access_id" jdbcType="INTEGER" property="accessId" />
+    <result column="subject_title" jdbcType="VARCHAR" property="subjectTitle" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_operator" jdbcType="VARCHAR" property="createOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ibm.bluekey.bean.MailTemplate">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    temp_id, access_id, subject_title, create_time, create_operator, update_time, update_operator, 
+    deleted
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.ibm.bluekey.bean.MailTemplateExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mail_template
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.ibm.bluekey.bean.MailTemplateExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mail_template
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mail_template
+    where temp_id = #{tempId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mail_template
+    where temp_id = #{tempId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ibm.bluekey.bean.MailTemplateExample">
+    delete from mail_template
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ibm.bluekey.bean.MailTemplate">
+    insert into mail_template (temp_id, access_id, subject_title, 
+      create_time, create_operator, update_time, 
+      update_operator, deleted, content
+      )
+    values (#{tempId,jdbcType=INTEGER}, #{accessId,jdbcType=INTEGER}, #{subjectTitle,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createOperator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateOperator,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ibm.bluekey.bean.MailTemplate">
+    insert into mail_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tempId != null">
+        temp_id,
+      </if>
+      <if test="accessId != null">
+        access_id,
+      </if>
+      <if test="subjectTitle != null">
+        subject_title,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createOperator != null">
+        create_operator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateOperator != null">
+        update_operator,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tempId != null">
+        #{tempId,jdbcType=INTEGER},
+      </if>
+      <if test="accessId != null">
+        #{accessId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectTitle != null">
+        #{subjectTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createOperator != null">
+        #{createOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateOperator != null">
+        #{updateOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ibm.bluekey.bean.MailTemplateExample" resultType="java.lang.Long">
+    select count(*) from mail_template
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update mail_template
+    <set>
+      <if test="record.tempId != null">
+        temp_id = #{record.tempId,jdbcType=INTEGER},
+      </if>
+      <if test="record.accessId != null">
+        access_id = #{record.accessId,jdbcType=INTEGER},
+      </if>
+      <if test="record.subjectTitle != null">
+        subject_title = #{record.subjectTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createOperator != null">
+        create_operator = #{record.createOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateOperator != null">
+        update_operator = #{record.updateOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update mail_template
+    set temp_id = #{record.tempId,jdbcType=INTEGER},
+      access_id = #{record.accessId,jdbcType=INTEGER},
+      subject_title = #{record.subjectTitle,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_operator = #{record.createOperator,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_operator = #{record.updateOperator,jdbcType=VARCHAR},
+      deleted = #{record.deleted,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update mail_template
+    set temp_id = #{record.tempId,jdbcType=INTEGER},
+      access_id = #{record.accessId,jdbcType=INTEGER},
+      subject_title = #{record.subjectTitle,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_operator = #{record.createOperator,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_operator = #{record.updateOperator,jdbcType=VARCHAR},
+      deleted = #{record.deleted,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibm.bluekey.bean.MailTemplate">
+    update mail_template
+    <set>
+      <if test="accessId != null">
+        access_id = #{accessId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectTitle != null">
+        subject_title = #{subjectTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createOperator != null">
+        create_operator = #{createOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateOperator != null">
+        update_operator = #{updateOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where temp_id = #{tempId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ibm.bluekey.bean.MailTemplate">
+    update mail_template
+    set access_id = #{accessId,jdbcType=INTEGER},
+      subject_title = #{subjectTitle,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_operator = #{createOperator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_operator = #{updateOperator,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where temp_id = #{tempId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ibm.bluekey.bean.MailTemplate">
+    update mail_template
+    set access_id = #{accessId,jdbcType=INTEGER},
+      subject_title = #{subjectTitle,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_operator = #{createOperator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_operator = #{updateOperator,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where temp_id = #{tempId,jdbcType=INTEGER}
+  </update>
+</mapper>
