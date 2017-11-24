@@ -68,11 +68,13 @@ public class GeneralController {
 			
 			Map<String,String> adminMap = userService.getAdminListMap();
 			
+			System.out.println("adminMap:"+adminMap);
 			String responseCode =bms.sendTestEmail(adminMap.get("super"),adminMap.get("normal"),"",loginUser.getUser().getEmail(),subject,content,"abled");//send mail 
-			JSONObject blueMailJson = new JSONObject(responseCode);
+			/*JSONObject blueMailJson = new JSONObject(responseCode);
 			JSONObject getStatus = blueMailJson.getJSONObject("getStatus");
 			String status = getStatus.getString("status");
-			
+			*/
+			System.out.println("feedback_responseCode:"+responseCode);
 			return ResponseData.success();
 		}catch(Exception  e ){
 			

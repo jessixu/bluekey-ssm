@@ -18,6 +18,7 @@
 <script src="static/js/language/zh_CN.js"></script>
 <script src="static/js/jquery.cxselect.js"></script>
 <script src="static/js/sweet-alert.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/facestypeahead-0.4.4.min.js" type="text/javascript" charset="utf-8"></script>
 
 <link rel="stylesheet" type="text/css" href="static/css/sweet-alert.css"/>	
 <link rel="shortcut icon" href="static/img/favico.ico"/>
@@ -27,7 +28,7 @@
 <link href="static/css/font-awesome.css" rel="stylesheet">
 <link href="static/css/bootstrap-social.css" rel="stylesheet">
 <link href="static/css/bootstrapValidator.css" rel="stylesheet">
-
+<link href="static/css/facestypeahead-0.4.4.min.css" rel="stylesheet">
 </head>
 <body style="overflow:scroll;overflow-x:hidden">
 	<div class="wrapper">
@@ -175,7 +176,8 @@
 								<div class="form-group">
 									<label for="inputEmailTitle" class="col-sm-4 control-label"><span style="color: red">*</span>Admin Email</label>
 									<div class="col-sm-6 ">
-										<input type="text" name="email" class="form-control" placeholder="Input Email" />
+										<input type="text" id="email-input" name="email" class="form-control typeahead" placeholder="Input Email" autocomplete="off" aria-autocomplete="list" aria-owns="typeahead-results"/>
+										
 									</div>
 								</div>
 								<div class="form-group">
@@ -212,7 +214,8 @@
 									<div class="form-group">
 										<label for="inputEmailTitle" class="col-sm-3 control-label"><span style="color: red">*</span>role name</label>
 										<div class="col-sm-6 ">
-											<input type="text" name="name" class="form-control" placeholder="Input role name" />
+											<input type="text" name="name"  class="form-control" placeholder="Input role name" />
+											   
 										</div>
 									</div>
 									
@@ -345,10 +348,28 @@
             $("body").stop().animate({  
                 scrollTop: 0  
             });  
-        })  
+        });
+		
 	});
 	
-	
+	 $(function(){
+		 ta1 = FacesTypeAhead.init(
+            $('#email-input')[0],
+            {
+                key: "bluekey-SSM; brucel@cn.ibm.com",
+                faces: {
+                    headerLabel: "People",
+
+                    onclick: function(person) {
+                        return person.email;
+                    }
+                },
+                topsearch: {
+                    headerLabel: "w3 Results",
+                    enabled: true
+                }
+            });
+     });
 	
 	$(document).ready(function() {
 		ajaxQryAdmin(1);

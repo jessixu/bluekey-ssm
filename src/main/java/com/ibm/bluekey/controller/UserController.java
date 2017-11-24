@@ -111,8 +111,8 @@ public class UserController {
 					LoginUser loginUser =(LoginUser) req.getSession().getAttribute("loginUser");
 				}else{
 					LoginUser loginUser = new LoginUser();
-					//boolean isAuthentication = ldap.authenticate(email, password);
-					boolean isAuthentication =true;
+					boolean isAuthentication = ldap.authenticate(email, password);
+					//boolean isAuthentication =true;
 					if(isAuthentication) {
 						List<User> userList = userService.findUserByEmail(email);
 						User user;

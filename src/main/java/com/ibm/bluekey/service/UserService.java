@@ -123,8 +123,17 @@ public class UserService {
 			normalAdmin.append(normal.getEmail()+",");
 		}
 		
-		adminMap.put("super", superAdmin.toString());
-		adminMap.put("normal",normalAdmin.toString());
+		if(superAdmin.length()==0){
+	    	adminMap.put("super",superAdmin.toString());
+	    }else{
+	    	adminMap.put("super",superAdmin.toString().substring(0, superAdmin.length()-1));
+	    }
+		
+		if(normalAdmin.length()==0){
+	    	adminMap.put("normal",normalAdmin.toString());
+	    }else{
+	    	adminMap.put("normal",normalAdmin.toString().substring(0, normalAdmin.length()-1));
+	    }
 		
 		return adminMap;
 		

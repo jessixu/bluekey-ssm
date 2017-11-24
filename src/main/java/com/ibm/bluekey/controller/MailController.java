@@ -92,12 +92,12 @@ public class MailController {
 			sendRecord.setCreateTime(dateNow); 
 			sendRecordService.saveRecord(sendRecord);
 			
-			
-			String responseCode =bms.sendTestEmail(sendRecord.getReceiveEmail(),"","",loginUser.getUser().getEmail(),sendRecord.getEmailSubject(),sendRecord.getContent(),"abled");//send mail 
+			String responseCode =bms.sendTestEmail("brucel@cn.ibm.com","brucel@cn.ibm.com","","brucel@cn.ibm.com",sendRecord.getEmailSubject(),sendRecord.getContent(),"abled");//send mail 
+			System.out.println("sendEmail_responseCode:"+responseCode);
+			//String responseCode =bms.sendTestEmail(sendRecord.getReceiveEmail(),loginUser.getUser().getEmail(),"",loginUser.getUser().getEmail(),sendRecord.getEmailSubject(),sendRecord.getContent(),"abled");//send mail 
 			JSONObject blueMailJson = new JSONObject(responseCode);
 			JSONObject getStatus = blueMailJson.getJSONObject("getStatus");
 			String status = getStatus.getString("status");
-			
 			
 			return ResponseData.success();
 		}catch(Exception  e ){

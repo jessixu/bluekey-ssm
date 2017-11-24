@@ -54,8 +54,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<form class="navbar-form" role="search" style="float: left;" action="access/search" method="post">
 						<div class="form-group">
-							<input type="text" name="search" class="form-control"
-								placeholder="Search" style="height: 34px" value="${search }">
+							<input type="text" name="search" class="form-control" placeholder="Search" style="height: 34px" value="${search }">
 							<span class="">
 								<button type="submit" class="btn btn-default"
 									style="height: 34px; background: #5c7ebd; border: 0;">

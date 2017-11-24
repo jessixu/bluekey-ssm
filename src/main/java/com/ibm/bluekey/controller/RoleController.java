@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,12 +56,6 @@ import com.ibm.bluekey.utils.ResponseData;
 @RequestMapping("/role")
 public class RoleController {
 	
-	private Map<Integer,String> buMap ;
-	private Map<Integer,String> functionMap ;
-	private Map<Integer,String> jobRoleMap ;
-	private Map<Integer,String> commodityMap ;
-	
-	
 	@Autowired
 	BuService buService;
 	@Autowired
@@ -73,7 +68,37 @@ public class RoleController {
 	UserService userService;
 	@Autowired
 	RoleService roleService;
+
+	private Map<Integer,String> buMap ;
+	private Map<Integer,String> functionMap ;
+	private Map<Integer,String> jobRoleMap ;
+	private Map<Integer,String> commodityMap ;
 	
+	@InitBinder
+	public void iniiBinder(){
+		
+		List<Bu> buList = buService.getBuList();
+		for(Bu bu:buList){
+			buMap.put(bu.getBuId(),bu.getName());
+		}
+		List<Function> functionList = functionService.getFunctionList();
+		functionMap = new HashMap<Integer,String>();
+		for(Function function:functionList){
+			functionMap.put(function.getfId(),function.getName());
+		}
+		
+		List<JobRole> jobRoleList = jobRoleService.getJobRoleList();
+		jobRoleMap = new HashMap<Integer,String>();
+		for(JobRole jobRole:jobRoleList){
+			jobRoleMap.put(jobRole.getjId(),jobRole.getName());
+		}
+		
+		List<Commodity> commodityList = commodityService.getCommodityList();
+		commodityMap = new HashMap<Integer,String>();
+		for(Commodity commodity:commodityList){
+			commodityMap.put(commodity.getcId(),commodity.getName());
+		}
+	}
 	
 	
 	/**
@@ -148,11 +173,9 @@ public class RoleController {
 		PageInfo pageInfo = new PageInfo(roleList,5);
 		
 		List<Bu> buList = buService.getBuList();
-		buMap = new HashMap<Integer,String>();
 		for(Bu bu:buList){
 			buMap.put(bu.getBuId(),bu.getName());
 		}
-		
 		List<Function> functionList = functionService.getFunctionList();
 		functionMap = new HashMap<Integer,String>();
 		for(Function function:functionList){
@@ -170,7 +193,6 @@ public class RoleController {
 		for(Commodity commodity:commodityList){
 			commodityMap.put(commodity.getcId(),commodity.getName());
 		}
-		
 		
 		return ResponseData.success().add("pageInfo", pageInfo).add("buMap",buMap).add("functionMap",functionMap).add("jobRoleMap",jobRoleMap).add("commodityMap",commodityMap);
 	}

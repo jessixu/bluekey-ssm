@@ -236,6 +236,11 @@ padding-top: 10px;*/
 	font-weight: 600;
 	color: rgba(92,126,189,1);
 }
+.typeahead {
+    border: 1px solid #888888;
+    /* -moz-box-shadow: 0px 0px 2px 0px #e4e4e4; */
+   /*  -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.75); */
+}
 
 /*** guide ***/
 .guide{width:60px;margin-left:650px;position:fixed;left:50%;bottom:134px;_position:absolute;_top:expression(documentElement.scrollTop+documentElement.clientHeight - this.clientHeight - 134+'px');display:block;}

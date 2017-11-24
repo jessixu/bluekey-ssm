@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-bottom">
 							<form role="form" class="login-form" id="login-form" name="login-form">
 								<div class="form-group input-group">
-									<span class="input-group-addon glyphicon glyphicon-user"></span>
+									<span id="login-email-span" class="input-group-addon glyphicon glyphicon-user"></span>
 									<input type="text" name="email" placeholder="email" class="email form-control" id="form-email">
 								</div>
 								<div class="form-group input-group">

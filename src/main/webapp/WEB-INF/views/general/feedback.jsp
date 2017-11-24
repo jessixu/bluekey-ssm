@@ -63,7 +63,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
-								<input type="hidden" name="user_id" value="${loginUser.user.userId}">
+								<input type="hidden" name="userId" value="${loginUser.user.userId}">
 								<button type="submit" class="btn btn-primary" style="background: #5c7ebd; border: 0;">submit</button>
 							</div>
 						</div>
