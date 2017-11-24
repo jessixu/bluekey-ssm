@@ -74,7 +74,7 @@ public class RoleController {
 	private Map<Integer,String> jobRoleMap ;
 	private Map<Integer,String> commodityMap ;
 	
-	@InitBinder
+	/*@InitBinder
 	public void iniiBinder(){
 		
 		List<Bu> buList = buService.getBuList();
@@ -99,7 +99,7 @@ public class RoleController {
 			commodityMap.put(commodity.getcId(),commodity.getName());
 		}
 	}
-	
+	*/
 	
 	/**
 	 * query查询结果
@@ -173,6 +173,7 @@ public class RoleController {
 		PageInfo pageInfo = new PageInfo(roleList,5);
 		
 		List<Bu> buList = buService.getBuList();
+		buMap = new HashMap<Integer,String>();
 		for(Bu bu:buList){
 			buMap.put(bu.getBuId(),bu.getName());
 		}

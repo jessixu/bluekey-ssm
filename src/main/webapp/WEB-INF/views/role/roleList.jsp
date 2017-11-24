@@ -543,19 +543,24 @@ $(document).ready(function(){
 	 * @returns
 	 */
 	function ajaxQryRole(beginNum){
+		
 		$.ajax({
-			url : "role/list",
+			url :"role/list",
+			type : "POST",
 			data : "beginNum=" + beginNum,
 			async : false,
 			success : function(result) {
+				
 				//解析JSON数据，显示员工详情
+				
 				showRoleList(result.data);
 				//解析JSON数据，显示分页信息
 				showPageInfoMsg(result);
 				//解析JSON数据，显示分页条
 				showPageScroll(result);
-			}		
+			}
 		});
+		
 	};
 	
 	//加载role 数据
